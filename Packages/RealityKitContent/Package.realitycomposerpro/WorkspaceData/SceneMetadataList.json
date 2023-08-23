@@ -3,6 +3,14 @@
     "objectMetadataList" : [
       [
         "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
         "Root",
         "Sphere"
       ],
@@ -14,14 +22,6 @@
         "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
         "Root",
         "GridMaterial"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
-        "Root"
       ],
       {
         "isExpanded" : true,
@@ -111,6 +111,24 @@
       [
         "DBBD55E9-4546-415B-B85C-A5572AE08F96",
         "Root",
+        "console_Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
+        "Root",
+        "skydome_Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
+        "Root",
         "dashboard_Material"
       ],
       {
@@ -119,45 +137,7 @@
       },
       [
         "DBBD55E9-4546-415B-B85C-A5572AE08F96",
-        "Root",
-        "Lucid_InteriorAndExterior"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
-        "Root",
-        "Lucid_InteriorAndExterior",
-        "Screen_Speed"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
-        "Root",
-        "Lucid_InteriorAndExterior",
-        "Screen_Volume"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
         "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
-        "Root",
-        "console_Material"
       ],
       {
         "isExpanded" : true,

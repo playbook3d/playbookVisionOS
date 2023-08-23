@@ -30,8 +30,10 @@ struct PlaybookView: View {
                     viewModel.rootEntity = entity
                     content.add(entity)
                     
-                    entity.position = SIMD3<Float>(0, 0, -6)
+                    entity.position = SIMD3<Float>(0, 0, -8)
                     
+                    
+                    /*
                     guard let url = Bundle.main.url(forResource: "skybox2", withExtension: "png"),
                                       let resource = try? await TextureResource(contentsOf: url) else {
                         fatalError("Unable to load skybox texture.")
@@ -48,6 +50,7 @@ struct PlaybookView: View {
                     skyboxEntity.scale *= .init(x: -1, y: 1, z: 1)
 
                     content.add(skyboxEntity)
+                     */
                     
                     subscriptions.append(content.subscribe(to: ComponentEvents.DidAdd.self,
                                                            componentType: FeaturePointComponent.self, { event in createFeatureDetailsView(for: event.entity)
@@ -58,6 +61,8 @@ struct PlaybookView: View {
                     let iblComponent = ImageBasedLightComponent(source: .single(resource), intensityExponent: 0)
                     entity.components.set(iblComponent)
                     entity.components.set(ImageBasedLightReceiverComponent(imageBasedLight: entity))
+                     
+                     
                     
                 } catch {
                     print("Error while loading RealityView \(error)")
