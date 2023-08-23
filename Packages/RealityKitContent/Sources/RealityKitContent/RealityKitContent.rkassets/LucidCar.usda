@@ -1,0 +1,362 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Lucid_InteriorAndExterior", "Lucid_InteriorAndExterior_1", "dashboard_Material", "console_Material", "console", "dashboard", "steeringWheel"]
+    def "Lucid_InteriorAndExterior" (
+        active = true
+        references = @Lucid_InteriorAndExterior.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (0, 0, -0.65927815)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Interior_TintedGlass" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            def RealityKitComponent "HierarchicalFade"
+            {
+                uniform token info:id = "RealityKit.HierarchicalFade"
+                float opacity = 0.5
+            }
+        }
+
+        over "Exterior_ClearGlass" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+        }
+
+        over "Interior_DriversWheel" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.7071067, -0.70710677, 0, 0)
+            float3 xformOp:scale = (5.008863, 5.008863, 5.008863)
+            float3 xformOp:translate = (170.57774, 450.5317, 243.93019)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        over "Screen_Volume" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            over "Screen_Volume_geometry" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </Root/console_Material> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+            }
+        }
+
+        over "Screen_Speed" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            over "Screen_Speed_geometry" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </Root/dashboard_Material> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+            }
+        }
+
+        over "Materials"
+        {
+            over "Interior"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "Exterior"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "ExteriorPreviewSurface"
+                {
+                    color3f inputs:diffuseColor = (0.8, 0.8, 0.8)
+                    color3f inputs:diffuseColor.connect = </Root/Lucid_InteriorAndExterior/Materials/Exterior/diffuseColor_texture.outputs:rgb>
+                }
+            }
+        }
+    }
+
+    def "Lucid_InteriorAndExterior_1" (
+        active = true
+        references = @Lucid_InteriorAndExterior.usdz@</Lucid_InteriorAndExterior/Materials/clear_glass>
+    )
+    {
+        token outputs:mtlx:surface
+        token outputs:realitykit:vertex
+    }
+
+    def Material "dashboard_Material"
+    {
+        bool inputs:isDashboardOn = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-410.17188, -195.9961)
+                    float2 sizeInSubgraph = (164, 53)
+                    int stackingOrderInSubgraph = 287
+                }
+            }
+        )
+        prepend token outputs:mtlx:surface.connect = </Root/dashboard_Material/MaterialXPreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (812.9336, -72.58984)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 81
+
+        def Shader "MaterialXPreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            float inputs:clearcoat
+            float inputs:clearcoatRoughness
+            color3f inputs:diffuseColor.connect = </Root/dashboard_Material/Image.outputs:out>
+            color3f inputs:emissiveColor
+            float inputs:ior
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:occlusion
+            float inputs:opacity
+            float inputs:roughness
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (425.26562, -47.945312)
+            float2 ui:nodegraph:node:size = (207.5, 199)
+            int ui:nodegraph:node:stackingOrder = 83
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = []
+        }
+
+        def Shader "Constant_1"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0, 0, 0) (
+                colorSpace = "srgb_texture"
+            )
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-294.0547, 14.480469)
+            float2 ui:nodegraph:node:size = (155, 53)
+            int ui:nodegraph:node:stackingOrder = 288
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            asset inputs:file = @Image.png@
+            string inputs:filtertype
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-604.28125, 145.73828)
+            float2 ui:nodegraph:node:size = (148.5, 199)
+            int ui:nodegraph:node:stackingOrder = 290
+        }
+
+        def Shader "IfEqual"
+        {
+            uniform token info:id = "ND_ifequal_color3B"
+            color3f inputs:in1.connect = </Root/dashboard_Material/Constant_1.outputs:out>
+            color3f inputs:in2.connect = </Root/dashboard_Material/Constant_2.outputs:out>
+            bool inputs:value1.connect = </Root/dashboard_Material.inputs:isDashboardOn>
+            bool inputs:value2 = 0
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (40.328125, -21.324219)
+            float2 ui:nodegraph:node:size = (109, 163)
+            int ui:nodegraph:node:stackingOrder = 287
+        }
+
+        def Shader "Constant_2"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.6412895, 0.1289423, 0.086988196) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:value.connect = </Root/dashboard_Material/Image.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-295.42188, 81.33594)
+            float2 ui:nodegraph:node:size = (158.5, 53)
+            int ui:nodegraph:node:stackingOrder = 287
+        }
+    }
+
+    def Material "console_Material" (
+        active = true
+    )
+    {
+        bool inputs:isConsoleOn = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-171.15234, -216.35547)
+                    float2 sizeInSubgraph = (146.5, 53)
+                    int stackingOrderInSubgraph = 356
+                }
+            }
+        )
+        prepend token outputs:mtlx:surface.connect = </Root/console_Material/MaterialXPreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        token outputs:surface.connect = </Root/console_Material/UsdPreviewSurface.outputs:surface>
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1014.2539, -36.171875)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 56
+
+        def Shader "UsdPreviewSurface" (
+            active = false
+        )
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            token outputs:surface
+        }
+
+        def Shader "MaterialXPreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            float inputs:clearcoat
+            float inputs:clearcoatRoughness
+            color3f inputs:diffuseColor.connect = </Root/console_Material/Image.outputs:out>
+            color3f inputs:emissiveColor
+            float inputs:ior
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:opacity
+            float inputs:roughness
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (759.2539, -40.671875)
+            float2 ui:nodegraph:node:size = (207.5, 307)
+            int ui:nodegraph:node:stackingOrder = 56
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+        }
+
+        def Shader "IfEqual"
+        {
+            uniform token info:id = "ND_ifequal_color3B"
+            color3f inputs:in1.connect = </Root/console_Material/Constant_1.outputs:out>
+            color3f inputs:in2.connect = </Root/console_Material/Constant_2.outputs:out>
+            bool inputs:value1.connect = </Root/console_Material.inputs:isConsoleOn>
+            bool inputs:value2 = 0
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (454.57422, -50.67578)
+            float2 ui:nodegraph:node:size = (109, 163)
+            int ui:nodegraph:node:stackingOrder = 359
+        }
+
+        def Shader "Constant_1"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.068258695, 0.068258695, 0.068258695) (
+                colorSpace = "srgb_texture"
+            )
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (131.52344, 14.8984375)
+            float2 ui:nodegraph:node:size = (155, 53)
+            int ui:nodegraph:node:stackingOrder = 360
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            asset inputs:file = @Image 2.png@
+            string inputs:filtertype
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-178.70312, 146.15625)
+            float2 ui:nodegraph:node:size = (148.5, 199)
+            int ui:nodegraph:node:stackingOrder = 361
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:file"]
+        }
+
+        def Shader "Constant_2"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.6412895, 0.1289423, 0.086988196) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:value.connect = </Root/console_Material/Image.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (130.15625, 81.75391)
+            float2 ui:nodegraph:node:size = (158.5, 53)
+            int ui:nodegraph:node:stackingOrder = 353
+        }
+    }
+
+    def Xform "console" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:translate = (-0.14881139, 1.0235895, 0.16889907)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitCustomComponent "RealityKitContent_FeaturePointComponent"
+        {
+            string description = "The fingertip activated Pilot Panel display contains expanded functionality for navigation, climate controls as well as detailed vehicle settings and information."
+            uniform token info:id = "RealityKitContent.FeaturePointComponent"
+        }
+    }
+
+    def Xform "dashboard" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0, 4.7123885)
+        }
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, 0, -0.70710677)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.04708965, 1.4954516, 0.30774754)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitCustomComponent "RealityKitContent_FeaturePointComponent"
+        {
+            string description = "The Glass Cockpit display is a 34-inch, 5K floating screen that puts essential information into your sightline, with vehicle controls to the left, driving details in the center, and navigation and media to the right."
+            token feature = "dashboard"
+            uniform token info:id = "RealityKitContent.FeaturePointComponent"
+            string name = "Dashboard"
+        }
+    }
+
+    def Xform "steeringWheel" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 4.712389, 0)
+        }
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.49991834, 1.3613157, 0.0060340185)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitCustomComponent "RealityKitContent_FeaturePointComponent"
+        {
+            string description = "The capacitive touch bars on the steering wheel provide convenient controls for media systems and Lucid DreamDrive."
+            token feature = "steringWheel"
+            uniform token info:id = "RealityKitContent.FeaturePointComponent"
+            string name = "Steering Wheel"
+        }
+    }
+}
+

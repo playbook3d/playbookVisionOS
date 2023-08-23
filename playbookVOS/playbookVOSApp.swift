@@ -6,12 +6,37 @@
 //
 
 import SwiftUI
+import RealityKitContent
+import ARKit
+import RealityKit
 
 @main
 struct playbookVOSApp: App {
-    var body: some Scene {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    private let immersiveSpaceIndentifier = "Immersive"
+    
+    @State private var viewModel = ViewModel()
+    
+    init() {
+        RealityKitContent.FeaturePointComponent.registerComponent()
+        FeaturePointRuntimeComponent.registerComponent()
+    }
+    
+    var body: some SwiftUI.Scene {
         WindowGroup {
-            ContentView()
+            ContentView(spaceId: immersiveSpaceIndentifier, viewModel: viewModel)
         }
+        .windowStyle(.plain)
+        
+        ImmersiveSpace(id: immersiveSpaceIndentifier){
+            PlaybookView(viewModel: viewModel)
+        }
+    }
+}
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: UIApplication) -> Bool {
+        return true
     }
 }
