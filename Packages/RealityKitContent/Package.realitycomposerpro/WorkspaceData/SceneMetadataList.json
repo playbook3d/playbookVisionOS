@@ -110,14 +110,6 @@
     "objectMetadataList" : [
       [
         "DBBD55E9-4546-415B-B85C-A5572AE08F96",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
         "Root",
         "dashboard_Material"
       ],
@@ -149,6 +141,14 @@
         "Root",
         "Lucid_InteriorAndExterior",
         "Screen_Volume"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "DBBD55E9-4546-415B-B85C-A5572AE08F96",
+        "Root"
       ],
       {
         "isExpanded" : true,

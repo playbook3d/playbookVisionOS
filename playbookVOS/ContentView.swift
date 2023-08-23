@@ -39,26 +39,8 @@ struct ContentView: View {
                 }
                 
                 GridRow{
-                    Toggle(isOn: $viewModel.isConsoleScreenEnabled){
-                        Text("Enable console screen")
-                    }
-                    .onChange(of: viewModel.isConsoleScreenEnabled){
-                        viewModel.isConsoleScreenEnabled.toggle()
-                    }
+                    Text("This is a simulation for users that want to know more about Lucid Cars. Feel free to move around and explore the outside and inside of the vehicle")
                 }
-                .disabled(!areControlsShowing)
-                .opacity(areControlsShowing ? 1 : 0.5)
-                
-                GridRow{
-                    Toggle(isOn: $viewModel.isDashboardScreenEnabled){
-                        Text("Enable dashboard screen")
-                    }
-                    .onChange(of: viewModel.isDashboardScreenEnabled){
-                        viewModel.isDashboardScreenEnabled.toggle()
-                    }
-                }
-                .disabled(!areControlsShowing)
-                .opacity(areControlsShowing ? 1 : 0.5)
             }
         }
         .animation(.default, value: areControlsShowing)

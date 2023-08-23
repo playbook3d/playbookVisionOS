@@ -15,6 +15,9 @@ struct playbookVOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     private let immersiveSpaceIndentifier = "Immersive"
     
+    @State private var lucidCarImmersionStyle: ImmersionStyle = .full
+    @State private var lucidCarMixedImmersionStyle: ImmersionStyle = .mixed
+    
     @State private var viewModel = ViewModel()
     
     init() {
@@ -31,6 +34,7 @@ struct playbookVOSApp: App {
         ImmersiveSpace(id: immersiveSpaceIndentifier){
             PlaybookView(viewModel: viewModel)
         }
+        .immersionStyle(selection: $lucidCarImmersionStyle, in: .full)
     }
 }
 

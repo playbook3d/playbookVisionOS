@@ -7,14 +7,14 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Lucid_InteriorAndExterior", "Lucid_InteriorAndExterior_1", "dashboard_Material", "console_Material", "console", "dashboard", "steeringWheel"]
+    reorder nameChildren = ["Lucid_InteriorAndExterior", "Lucid_InteriorAndExterior_1", "dashboard_Material", "console_Material", "console", "dashboard", "steeringWheel", "Floor"]
     def "Lucid_InteriorAndExterior" (
         active = true
         references = @Lucid_InteriorAndExterior.usdz@
     )
     {
         float3 xformOp:scale = (0.003, 0.003, 0.003)
-        float3 xformOp:translate = (0, 0, -0.65927815)
+        float3 xformOp:translate = (0.000005185604, 0.18564641, -0.65927815)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         over "Interior_TintedGlass" (
@@ -307,7 +307,7 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
-        float3 xformOp:translate = (-0.14881139, 1.0235895, 0.16889907)
+        float3 xformOp:translate = (-0.1488062, 1.2092359, 0.16889907)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_FeaturePointComponent"
@@ -326,7 +326,7 @@ def Xform "Root"
     {
         quatf xformOp:orient = (0.70710677, 0, 0, -0.70710677)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.04708965, 1.4954516, 0.30774754)
+        float3 xformOp:translate = (-0.047084466, 1.681098, 0.30774754)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_FeaturePointComponent"
@@ -347,7 +347,7 @@ def Xform "Root"
     {
         quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.49991834, 1.3613157, 0.0060340185)
+        float3 xformOp:translate = (0.49992353, 1.5469621, 0.006034014)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_FeaturePointComponent"
@@ -357,6 +357,40 @@ def Xform "Root"
             uniform token info:id = "RealityKitContent.FeaturePointComponent"
             string name = "Steering Wheel"
         }
+    }
+
+    def Cube "Floor" (
+        active = false
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/Smooth_Concrete> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        float3 xformOp:scale = (100, 1, 100)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/Floor/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def "Smooth_Concrete" (
+        active = true
+        prepend references = @SmoothConcrete.usdz@
+    )
+    {
     }
 }
 

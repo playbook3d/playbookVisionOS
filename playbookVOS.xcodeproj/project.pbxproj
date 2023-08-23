@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2D84652A95B7E50035F7E1 /* ImageBasedLighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = 0C2D84642A95B7E50035F7E1 /* ImageBasedLighting.skybox */; };
+		0C738AAF2A9596830086C17E /* tech_noir.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C738AAE2A9596830086C17E /* tech_noir.jpg */; };
+		0C738AB22A95A0DC0086C17E /* skybox2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C738AB12A95A0DC0086C17E /* skybox2.png */; };
+		0C738AD82A95A7EC0086C17E /* skybox3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C738AD72A95A7EC0086C17E /* skybox3.png */; };
 		0C9585E02A94C6E8008F2846 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 0C9585DF2A94C6E8008F2846 /* RealityKitContent */; };
 		0C9585E22A94C6E8008F2846 /* playbookVOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9585E12A94C6E8008F2846 /* playbookVOSApp.swift */; };
 		0C9585E42A94C6E8008F2846 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9585E32A94C6E8008F2846 /* ContentView.swift */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2D84642A95B7E50035F7E1 /* ImageBasedLighting.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = ImageBasedLighting.skybox; sourceTree = "<group>"; };
+		0C738AAE2A9596830086C17E /* tech_noir.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tech_noir.jpg; sourceTree = "<group>"; };
+		0C738AB12A95A0DC0086C17E /* skybox2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skybox2.png; sourceTree = "<group>"; };
+		0C738AD72A95A7EC0086C17E /* skybox3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skybox3.png; sourceTree = "<group>"; };
 		0C9585DA2A94C6E8008F2846 /* playbookVOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playbookVOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9585DE2A94C6E8008F2846 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		0C9585E12A94C6E8008F2846 /* playbookVOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playbookVOSApp.swift; sourceTree = "<group>"; };
@@ -65,6 +73,10 @@
 		0C9585DC2A94C6E8008F2846 /* playbookVOS */ = {
 			isa = PBXGroup;
 			children = (
+				0C2D84642A95B7E50035F7E1 /* ImageBasedLighting.skybox */,
+				0C738AD72A95A7EC0086C17E /* skybox3.png */,
+				0C738AB12A95A0DC0086C17E /* skybox2.png */,
+				0C738AAE2A9596830086C17E /* tech_noir.jpg */,
 				0C9585E12A94C6E8008F2846 /* playbookVOSApp.swift */,
 				0C9585E32A94C6E8008F2846 /* ContentView.swift */,
 				0C9585EF2A94C7FC008F2846 /* ViewModel.swift */,
@@ -155,8 +167,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C738AB22A95A0DC0086C17E /* skybox2.png in Resources */,
 				0C9585E92A94C6EB008F2846 /* Preview Assets.xcassets in Resources */,
+				0C738AD82A95A7EC0086C17E /* skybox3.png in Resources */,
+				0C738AAF2A9596830086C17E /* tech_noir.jpg in Resources */,
 				0C9585E62A94C6EB008F2846 /* Assets.xcassets in Resources */,
+				0C2D84652A95B7E50035F7E1 /* ImageBasedLighting.skybox in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
