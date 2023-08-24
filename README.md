@@ -3,6 +3,5 @@ Playbook, powered by Apple Vision Pro, is a powerful and flexible enterprise pla
 
 This demo was developed using the visionOS simulator on Xcode 15 beta 6.
 
-https://github.com/playbookvr/playbookVisionOS/assets/16522243/d1a5bc94-779a-4264-9f78-352f827377eb
-
+https://github.com/playbookvr/playbookVisionOS/assets/16522243/ff959817-e20d-4b6b-bcdc-df84ba525ccc
 
